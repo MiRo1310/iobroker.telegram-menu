@@ -491,15 +491,16 @@ export default class TelegramMenu extends utils.Adapter {
         }
     }
 }
-
+let adapter;
 if (require.main !== module) {
     // Export the constructor in compact mode
     /**
      * @param [options] - Adapter options
      */
-    module.exports = (options: Partial<utils.AdapterOptions<undefined, undefined>> | undefined) =>
+    adapter = (options: Partial<utils.AdapterOptions<undefined, undefined>> | undefined): TelegramMenu =>
         new TelegramMenu(options);
 } else {
     // otherwise start the instance directly
     new TelegramMenu();
 }
+export { adapter };
